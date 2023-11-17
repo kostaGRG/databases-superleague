@@ -101,3 +101,6 @@ _Assumptions_:
 | Match_Has_Goals                        | Each match can have from 0 to many goals.                                                                                           | Has-A       | 1:N               | Goals: Total, Matches: Partial                                                              | -                                             |
 | Match_Has_Cards                        | Each match can have 0 or more cards.                                                                                                | Determining | 1:N               | Cards: Total, Matches: Partial                                                              | -                                             |
 | Team_Has_Coach                         | Each team has one coach, and each coach coaches one team.                                                                           | Has-A       | 1:1               | Coaches: Total, Matches: Partial                                                            | -                                             |
+
+### Entities/Relationships Diagram
+![ERD](/images/erd.png)
