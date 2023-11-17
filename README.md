@@ -75,3 +75,14 @@ _Assumptions_:
 * We are interested in player contracts only with teams from the Greek championship.
 * Each match ends without delays, in 90 minutes.
 
+### Entities
+| Name         | Description                              | Properties    | Attributes                                          |
+|--------------|------------------------------------------|---------------|-----------------------------------------------------|
+| Teams        | Storing details for the league's teams   | Strong entity | Team_ID,Full_Name,Short_Name,Year_Founded,City      |
+| Matches      | Storing details for the league's matches | Strong entity | Match_ID,MatchWeek,Season,DateTime                  |
+| Players      | Storing details for the league's players | Strong entity | Player_ID,Name,Birth_Date,Nationality,Main_Position |
+| Goals        | Storing league's goals                   | Strong entity | Goal_ID,Type,Minute                                 |
+| Cards        | Storing player's cards (yellow or red)   | Weak entity   | Type, Minute                                        |
+| Achievements | Storing teams' trophies                  | Strong entity | Achievement_ID,Season,Competition                   |
+| Stadiums     | Storing fields for each team             | Strong entity | Name,Capacity,Address(Street,City,ZIP)              |
+| Coaches      | Storing details for league's coaches     | Strong entity | Coach_ID,Name,Nationality,Birth_Date                |
