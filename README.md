@@ -5,7 +5,7 @@
    Email: kostas.gerogiannis04@gmail.com  
    Github: https://github.com/kostaGRG  
 2. Aristeidis Sarchousidis  
-   Email:  
+   Email: aristidissarhousoudis@gmail.com  
    Github: https://github.com/saristei  
 3. Eleftherios Klonos  
    Email: lefterisklonos@gmail.com  
@@ -264,3 +264,21 @@ _Assumptions_:
 ### Relational Schema
 
 ![Schema](/images/schema.png)
+
+## Part B
+Build the database you designed in the first part in SQL. The construction of the
+database includes:
+1. Correcting the design of your database, according to the comments you received for the
+first deliverable.
+2. Creating the tables and views of the database. You must define foreign keys correctly, as
+well as any constraints you have introduced.
+3. Inserting examples into the tables of the database.
+4. Creating the queries you have defined for the database.
+5. Creating the users you have defined and determining their permissions
+
+## Part B: Solution
+We created the database on MySQL. This is the extracted diagram:
+
+![Superleague Database Diagram](/images/diagram.png)
+
+all the DB related files are stored on a folder named SQL. 
