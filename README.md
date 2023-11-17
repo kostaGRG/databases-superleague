@@ -104,3 +104,163 @@ _Assumptions_:
 
 ### Entities/Relationships Diagram
 ![ERD](/images/erd.png)
+
+### Relational Model
+#### Domains
+
+| Domain                   | Data Type                                                 |
+|--------------------------|-----------------------------------------------------------|
+| Integer                  | INT                                                       |
+| Small team name          | CHAR(4)                                                   |
+| Long string              | VARCHAR(60)                                               |
+| Address                  | VARCHAR(35)                                               |
+| TIN                      | INT                                                       |
+| YEAR                     | INT                                                       |
+| Simple string            | VARCHAR(25)                                               |
+| Capacity                 | INT                                                       |
+| Postal code              | INT                                                       |
+| Card categories          | ENUM('Yellow','Second_Yellow','Red')                      |
+| Date                     | DATE                                                      |
+| Period                   | ENUM('2018-19','2019-2020','2020-21','2021-22','2022-23') |
+| Date and Time            | DATETIME                                                  |
+| Player Position          | ENUM('ST','MD','DE','GK')                                 |
+| Match Minute             | INT                                                       |
+| Goals' categories        | ENUM('Goal','Penalty_Goal','Own_Goal')                    |
+| Competitions' categories | ENUM('SuperLeague','Greek Cup')                           |
+
+#### Relations
+##### Teams
+
+| Name         | Type                     |
+|--------------|--------------------------|
+| Team_ID      | TIN                      |
+| Full_Name    | Long String              |
+| Short_Name   | Small team name          |
+| Year_Founded | Year                     |
+| City         | Simple String            |
+| Stadium_Name | Simple String            |
+| Restrictions | -                        |
+| Primary key  | Team_ID                  |
+| Foreign keys | Stadium_Name ON Stadiums |
+
+##### Stadiums
+
+| Name         | Type          |
+|--------------|---------------|
+| Name         | Simple String |
+| Capacity     | Capacity      |
+| Street       | Simple String |
+| City         | Simple String |
+| ZIP          | Postal Code   |
+| Restrictions | -             |
+| Primary key  | Name          |
+| Foreign keys | -             |
+
+##### Achievements
+
+| Name           | Type                     |
+|----------------|--------------------------|
+| Achievement_ID | INTEGER                  |
+| Team_ID        | TIN                      |
+| Competition    | Competitions' categories |
+| Season         | Period                   |
+| Restrictions   | -                        |
+| Primary key    | Achievement_ID           |
+| Foreign keys   | -                        |
+
+##### Players
+
+| Name          | Type              |
+|---------------|-------------------|
+| Player_ID     | INTEGER           |
+| Name          | Simple String     |
+| Birth_Date    | DATE              |
+| Nationality   | Simple String     |
+| Main_Position | Players' Position |
+| Restrictions  | -                 |
+| Primary key   | Player_ID         |
+| Foreign keys  | -                 |
+
+##### Player_and_Team_Have_Contracts
+
+| Name         | Type                                   |
+|--------------|----------------------------------------|
+| Contract_ID  | INTEGER                                |
+| From_Date    | DATE                                   |
+| To_Date      | DATE                                   |
+| Player_ID    | INTEGER                                |
+| Team_ID      | TIN                                    |
+| Shirt_Number | INTEGER                                |
+| Restrictions | -                                      |
+| Primary key  | Contract_ID                            |
+| Foreign keys | Player_ID ON Players, Team_ID ON Teams |
+
+##### Matches
+
+| Name         | Type                                         |
+|--------------|----------------------------------------------|
+| Match_ID     | INTEGER                                      |
+| Home_Team_ID | TIN                                          |
+| Away_Team_ID | TIN                                          |
+| MatchWeek    | INTEGER                                      |
+| Season       | Period                                       |
+| DateTime     | DATETIME                                     |
+| Restrictions | -                                            |
+| Primary key  | Match_ID                                     |
+| Foreign keys | Home_Team_ID ON Teams, Away_Team_ID ON Teams |
+
+##### Player_Plays_Match
+
+| Name         | Type                                      |
+|--------------|-------------------------------------------|
+| From_Minute  | Match minute                              |
+| To_Minute    | Match minute                              |
+| Player_ID    | INTEGER                                   |
+| Match_ID     | INTEGER                                   |
+| Restrictions | -                                         |
+| Primary key  | Player_ID,Match_ID                        |
+| Foreign keys | Player_ID ON Players, Match_ID ON Matches |
+
+##### Goals
+
+| Name         | Type                                                                                     |
+|--------------|------------------------------------------------------------------------------------------|
+| Goal_ID      | INTEGER                                                                                  |
+| Minute       | Match minute                                                                             |
+| Scorer_ID    | INTEGER                                                                                  |
+| Assister_ID  | INTEGER                                                                                  |
+| ForTeam_ID   | TIN                                                                                      |
+| OnMatch_ID   | INTEGER                                                                                  |
+| Type         | Goals Categories                                                                         |
+| Restrictions | -                                                                                        |
+| Primary key  | Goal_ID                                                                                  |
+| Foreign keys | Scorer_ID ON Players, Assister_ID ON Players, forTeam_ID ON Teams, OnMatch_ID ON Matches |
+
+##### Cards
+
+| Name         | Type                                          |
+|--------------|-----------------------------------------------|
+| Type         | Card Categories                               |
+| Minute       | Match minute                                  |
+| OnPlayer_ID  | INTEGER                                       |
+| OnMatch_ID   | INTEGER                                       |
+| Restrictions | -                                             |
+| Primary key  | OnPlayer_ID,OnMatch_ID,Type                   |
+| Foreign keys | OnPlayer_ID ON Players, OnMatch_ID ON Matches |
+
+##### Coaches
+
+| Name         | Type          |
+|--------------|---------------|
+| Coach_ID     | INTEGER       |
+| Team_ID      | TIN           |
+| Name         | Simple String |
+| Birth_Date   | DATE          |
+| Nationality  | Simple String |
+| Restrictions | -             |
+| Primary key  | Coach_ID      |
+| Foreign keys | -             |
+
+### Relational Schema
+
+![Schema](/images/schema.png)
